@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class MainActivity extends AppCompatActivity {
     protected SharedPreferences shared;
     protected TextView MainCnt;
@@ -18,8 +20,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initial();
+        BottomNavi_init();
     }
+    private void BottomNavi_init(){
+        BottomNavigationView bottomNavigationView
+                = (BottomNavigationView) findViewById(R.id.include2);
 
+        bottomNavigationView.getMenu().getItem(0).setChecked(true);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener((item) -> {
+            switch (item.getItemId()) {
+                case R.id.nav1:
+                    break;
+                case R.id.nav2:
+                    Intent intent2 = new Intent(MainActivity.this, PageTwo.class);
+                    startActivity(intent2);
+                    break;
+            }
+            return true;
+        });
+    }
     void initial() {
 
         shared = getSharedPreferences("myVal", MODE_PRIVATE);
