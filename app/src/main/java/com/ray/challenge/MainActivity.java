@@ -1,45 +1,37 @@
 package com.ray.challenge;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.ray.challenge.view.BottomNavigation;
 
 public class MainActivity extends AppCompatActivity {
     protected SharedPreferences shared;
     protected TextView MainCnt;
     private int AllCnt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Page1");
         initial();
-        BottomNavi_init();
+        BottomNav_init();
     }
-    private void BottomNavi_init(){
-        BottomNavigationView bottomNavigationView
-                = (BottomNavigationView) findViewById(R.id.include2);
 
-        bottomNavigationView.getMenu().getItem(0).setChecked(true);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener((item) -> {
-            switch (item.getItemId()) {
-                case R.id.nav1:
-                    break;
-                case R.id.nav2:
-                    Intent intent2 = new Intent(MainActivity.this, PageTwo.class);
-                    startActivity(intent2);
-                    break;
-            }
-            return true;
-        });
+    private void BottomNav_init() {
+        BottomNavigationView MyBtmNav = findViewById(R.id.include2);
+        BottomNavigation BtmNav = new BottomNavigation(this, MyBtmNav,0);
+        BtmNav.init();
     }
+
     void initial() {
 
         shared = getSharedPreferences("myVal", MODE_PRIVATE);
@@ -75,28 +67,31 @@ public class MainActivity extends AppCompatActivity {
         });
 
         plus2.setOnClickListener(v -> {
-            addValue(cntAdr2);
+            addValue(cntAdr2,2);
 //            count2++;
 //            cnt2.setText(String.valueOf(count2));
             AllCnt();
         });
 
         plus3.setOnClickListener(v -> {
-            addValue(cntAdr3);
+            addValue(cntAdr3,3);
             AllCnt();
         });
     }
 
-    protected void addValue(@NonNull Address addr,@NonNull TextView tv) {
+    protected void addValue(@NonNull Address addr, @NonNull TextView tv) {
         addr.IntVal++;
         tv.setText(String.valueOf(addr.IntVal));
+        shared.edit().putInt("count1",addr.IntVal).apply();
     }
 
-    protected void addValue(@NonNull Address addr) {
+    protected void addValue(@NonNull Address addr, int index) {
         addr.IntVal++;
+        String Ind = "count" + index;
+        shared.edit().putInt(Ind,addr.IntVal).apply();
     }
-    protected void AllCnt() {
 
+    protected void AllCnt() {
         AllCnt++;
         shared.edit()
                 .putInt("AllC", AllCnt)
