@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.ray.challenge.view.BottomNavigation;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,7 +32,10 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigation BtmNav = new BottomNavigation(this, MyBtmNav,0);
         BtmNav.init();
     }
+    private void Nav_init(){
+        NavigationView MyNav = findViewById(R.id.nav_view);
 
+    }
     void initial() {
 
         shared = getSharedPreferences("myVal", MODE_PRIVATE);

@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">challenge</string>
+    <string name="item1_title">第一頁</string>
+    <string name="item2_title">第二頁</string>
+    <string name="item3_title">第三頁</string>
+
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="menu">側邊欄</string>
 </resources>

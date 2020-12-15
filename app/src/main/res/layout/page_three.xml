@@ -46,5 +46,8 @@
         app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toEndOf="@+id/counter3"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
+    <include
+        android:id="@+id/include2"
+        layout="@layout/bottom_nav_view">
+    </include>
 </androidx.constraintlayout.widget.ConstraintLayout>
