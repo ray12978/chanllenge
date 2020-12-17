@@ -29,7 +29,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/Activity.Theme">
         </activity>
-
+        <activity
+            android:name=".FirstPage"
+            android:screenOrientation="portrait"
+            android:theme="@style/Activity.Theme">
+        </activity>
     </application>
 
 </manifest>

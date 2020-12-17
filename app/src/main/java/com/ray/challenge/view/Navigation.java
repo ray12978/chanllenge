@@ -32,7 +32,7 @@ public class Navigation extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         // R.id.drawer_layout should be in every activity with exactly the same id.
         super.onCreate(savedInstanceState);
-        drawerLayout = findViewById(R.id.drawer_layout);
+        //drawerLayout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.include);
         drawerToggle = new ActionBarDrawerToggle((Activity) this, drawerLayout, toolbar, 0, 0) {
             public void onDrawerClosed(View view) {
@@ -48,14 +48,7 @@ public class Navigation extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
 
-        drawerList.addFooterView(footerView);
 
-        drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
-                map.drawerClickEvent(pos);
-            }
-        });
     }
 
     @Override
